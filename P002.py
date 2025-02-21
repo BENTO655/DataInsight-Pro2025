@@ -2,8 +2,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 
-import matplotlib.pyplot as plt
-
 # Gerando os dados
 data = {
     'Data': pd.date_range(start='2024-01-01', end='2024-12-31', freq='D'),
@@ -21,30 +19,19 @@ st.title('Dashboard de Vendas')
 # Gráfico 1: Vendas por Produto
 st.subheader('Vendas por Produto')
 vendas_produto = df.groupby('Produto')['Total_Venda'].sum()
-fig1, ax1 = plt.subplots()
-vendas_produto.plot(kind='bar', ax=ax1)
-ax1.set_ylabel('Total de Vendas')
-st.pyplot(fig1)
+st.bar_chart(vendas_produto)
 
 # Gráfico 2: Vendas por Região
 st.subheader('Vendas por Região')
 vendas_regiao = df.groupby('Regiao')['Total_Venda'].sum()
-fig2, ax2 = plt.subplots()
-vendas_regiao.plot(kind='bar', ax=ax2)
-ax2.set_ylabel('Total de Vendas')
-st.pyplot(fig2)
+st.bar_chart(vendas_regiao)
 
 # Gráfico 3: Quantidade Vendida por Data
 st.subheader('Quantidade Vendida por Data')
-fig3, ax3 = plt.subplots()
-df.groupby('Data')['Quantidade'].sum().plot(ax=ax3)
-ax3.set_ylabel('Quantidade Vendida')
-st.pyplot(fig3)
+quantidade_vendida_por_data = df.groupby('Data')['Quantidade'].sum()
+st.line_chart(quantidade_vendida_por_data)
 
 # Gráfico 4: Preço Médio por Produto
 st.subheader('Preço Médio por Produto')
 preco_medio_produto = df.groupby('Produto')['Preco_Unitario'].mean()
-fig4, ax4 = plt.subplots()
-preco_medio_produto.plot(kind='bar', ax=ax4)
-ax4.set_ylabel('Preço Médio')
-st.pyplot(fig4)
+st.bar_chart(preco_medio_produto)
