@@ -29,8 +29,8 @@ st.line_chart(df.set_index('Data')['Quantidade'])
 
 # Criar gráfico de barras
 st.subheader('Gráfico de Barras')
-bar_data = df.groupby(['Produto', 'Regiao']).sum().unstack()
-st.bar_chart(bar_data['Quantidade'])
+bar_data = df.groupby(['Produto', 'Regiao'])['Quantidade'].sum().unstack().fillna(0)
+st.bar_chart(bar_data)
 
 # Criar gráfico de linha
 st.subheader('Gráfico de Linha')
