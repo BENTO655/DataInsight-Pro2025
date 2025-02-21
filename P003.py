@@ -35,7 +35,8 @@ st.subheader('Gráfico de Barras')
 bar_data = df.groupby(['Produto', 'Regiao'])['Quantidade'].sum().unstack().fillna(0)
 st.bar_chart(bar_data)
 
-# Criar gráfico de linha
-st.subheader('Gráfico de Linha')
+# Criar gráfico de linha com média móvel de 7 dias
+st.subheader('Gráfico de Linha com Média Móvel de 7 Dias')
 line_data = df.pivot(index='Data', columns='Produto', values='Preco_Unitario')
-st.line_chart(line_data)
+line_data_ma = line_data.rolling(window=7).mean()
+st.line_chart(line_data_ma)
