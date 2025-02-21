@@ -38,5 +38,6 @@ st.bar_chart(bar_data)
 # Criar gráfico de linha com média móvel de 7 dias
 st.subheader('Gráfico de Linha com Média Móvel de 7 Dias')
 line_data = df.pivot(index='Data', columns='Produto', values='Preco_Unitario')
+line_data = line_data.fillna(method='ffill').fillna(method='bfill')
 line_data_ma = line_data.rolling(window=7).mean()
 st.line_chart(line_data_ma)
