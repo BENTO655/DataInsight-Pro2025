@@ -20,7 +20,10 @@ coluna = st.selectbox('Selecione a coluna para visualização', df.columns)
 
 # Criar gráfico de histograma
 st.subheader('Histograma')
-st.bar_chart(df[coluna].value_counts())
+if pd.api.types.is_numeric_dtype(df[coluna]):
+    st.bar_chart(df[coluna].value_counts())
+else:
+    st.write("A coluna selecionada não é numérica e não pode ser exibida como histograma.")
 
 # Criar gráfico de dispersão
 st.subheader('Gráfico de Dispersão')
