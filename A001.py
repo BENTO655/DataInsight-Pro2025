@@ -2,7 +2,7 @@ import pandas as pd
 import streamlit as st
 
 nome = st.text_input(" Seu nome completo?")
-st.write("Seja bem vinda,a :, nome)
+st.write("Seja bem vinda,a :", nome)
 
 st.write("Olá, *Seja bem vindo!* :sunglasses:")
 st.title("Calculadora de horas trabalhadas!")
