@@ -1,7 +1,7 @@
 import pandas as pd
 import streamlit as st
 
-st.write("Olá, *Seja bem vindo!* :sunglasses:")
+st.write("Olá, *Seja bem vindo! Bento* :sunglasses:")
 st.title("Calculadora de horas trabalhadas!")
 
 # Function to calculate hours worked
