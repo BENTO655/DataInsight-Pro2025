@@ -4,6 +4,11 @@ import streamlit as st
 st.write("Olá, *Seja bem vindo! Bento* :sunglasses:")
 st.title("Calculadora de horas trabalhadas!")
 
+
+imagem = st.file_uploader("Escolha uma imagem", type=["jpg", "jpeg", "png"])
+if imagem is not None:
+    st.image(imagem, caption='Imagem carregada', use_column_width=True)
+    
 # Function to calculate hours worked
 def calcular_horas_trabalhadas(hora_inicio, hora_fim):
     formato = "%H:%M"
